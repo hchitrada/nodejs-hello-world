@@ -10,11 +10,12 @@ phases:
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
-      - npm install
+      - pip3 install awscli --upgrade --user
+      - aws codeartifact login --tool npm --domain codeartifact --domain-owner 264161240947 --repository secondbuildcodeartifact
   build:
     commands:
       - echo Build started on `date`
-      - echo Compiling the Node.js code
+      - npm install
   post_build:
     commands:
       - echo Build completed on `date`
